@@ -1,0 +1,31 @@
+.movie-card {
+    position: relative;
+    z-index: 100;
+    background-color: lighten(#2e3036, 5);
+    border-radius: 5px;
+
+    &:hover {
+        text-decoration: none;
+        color: lighten(#2e3036, 70);
+    }
+    .image-container {
+        height: 100px;
+
+        img {
+            display: block;
+            height: 100%;
+        }
+    }
+
+    .movie-copy {
+        .movie-title {
+            color: lighten(#2e3036, 70);
+        }
+        .movie-year {
+            color: lighten(#2e3036, 40);
+        }
+        .popularity {
+            color: lighten(#2e3036, 70);
+        }
+    }
+}

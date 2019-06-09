@@ -62,6 +62,14 @@
 
 // Settings
 @import 'settings/reset';
+@import 'settings/base';
 
 // Pages
 @import 'page/homepage';
+@import 'page/movie-info';
+
+// Partials
+@import 'partials/header';
+@import 'partials/nav';
+@import 'components/main-search';
+@import 'components/movie-preview';
