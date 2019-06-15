@@ -56,7 +56,7 @@ export default class MainSearch extends React.Component {
                     <form className="search-form">
                         <div className={"search-form-wrapper d-flex align-items-center " + (this.state.formFocused ? "active " : " ")}>
                             <i className="fas fa-search"></i>
-                            <input className="search" type="text" placeholder="Search for a movie or tv show . . ." onFocus={this.handleFocus} onBlur={this.handleBlur} onChange={this.handleChange}/>
+                            <input className="search" type="text" placeholder={this.props.isMobile ? "Search . . ." : "Search for a movie or tv show . . ."} onFocus={this.handleFocus} onBlur={this.handleBlur} onChange={this.handleChange}/>
                             <button className="search-button d-lg-none">GO</button>
                         </div>
                         <div className={"search-results d-none flex-column " + (this.state.formFocused ? "d-flex " : " ")}>

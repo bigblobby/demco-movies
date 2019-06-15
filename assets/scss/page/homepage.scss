@@ -4,6 +4,10 @@
     background-size: cover;
     height: calc(90vh - 142px);
 
+    @include media-breakpoint-down(md){
+        height: 90vh;
+    }
+
     &:after {
         content: '';
         position: absolute;
@@ -18,11 +22,19 @@
     .hero-heading {
         z-index: 1;
         font-size: 3rem;
+
+        @include media-breakpoint-down(md){
+            font-size: 2rem;
+        }
     }
 
     .hero-sub-heading {
         font-size: 1.5rem;
         z-index: 1;
+
+        @include media-breakpoint-down(md){
+            font-size: 1rem;
+        }
     }
 }
 

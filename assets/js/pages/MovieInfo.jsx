@@ -32,9 +32,8 @@ export default class MovieInfo extends React.Component {
     }
 
     renderPersonCard(person){
-
         return (
-            <div className="slide">
+            <div className="slide" key={person.id}>
                 <div className="person-container">
                     <div className="poster">
                         <img src={"http://image.tmdb.org/t/p/w185/" + person.profile_path} alt={person.name}/>

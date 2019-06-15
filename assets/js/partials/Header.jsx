@@ -44,7 +44,7 @@ export default class Header extends React.Component {
                         <div className="logo-container pr-lg-3 mr-auto mr-lg-0">
                             <NavLink className="logo" to="/"><h1>DemCo</h1></NavLink>
                         </div>
-                        <Nav handleClickedSearch={this.handleClickedSearch}/>
+                        <Nav isMobile={this.props.isMobile} handleClickedSearch={this.handleClickedSearch}/>
                     </div>
                 </header>
                 <SearchOverlay searchToggled={this.state.searchToggled} handleClose={this.handleClose} handleBlur={this.handleBlur}/>

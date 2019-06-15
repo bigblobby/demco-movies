@@ -29,10 +29,10 @@ export default class Homepage extends React.Component {
         let image = "url('" + this.state.heroPoster +"')";
 
         return(
-            <div className="hero d-flex flex-column justify-content-center" style={{backgroundImage: image}}>
+            <div className="hero d-flex flex-column justify-content-center p-4" style={{backgroundImage: image}}>
                 <h1 className="hero-heading text-center">Find and discover the latest and greatest movies.</h1>
                 <h5 className="hero-sub-heading text-center">Search for your next favourite movie.</h5>
-                <MainSearch/>
+                <MainSearch isMobile={this.props.isMobile}/>
             </div>
         );
     }
