@@ -9,23 +9,17 @@ export default class Header extends React.Component {
         super();
 
         this.state = {
-            searchToggled: false
+            searchOverlayOpen: false
         };
 
-        this.handleClickedSearch = this.handleClickedSearch.bind(this);
         this.handleOverlay = this.handleOverlay.bind(this);
         this.handleBlur = this.handleBlur.bind(this);
     }
 
-    handleClickedSearch(){
-        this.setState(prevState => {
-            return {searchToggled: !prevState.searchToggled};
-        });
-    }
-
     handleOverlay(){
+        console.log('test');
         this.setState(prevState => {
-            return {searchToggled: !prevState.searchToggled};
+            return {searchOverlayOpen: !prevState.searchOverlayOpen};
         });
     }
 
@@ -33,7 +27,7 @@ export default class Header extends React.Component {
         // Clear out the search field when click off
         e.currentTarget.value = '';
 
-        setTimeout(()=> this.setState({searchToggled: false}), 110);
+        setTimeout(()=> this.setState({searchOverlayOpen: false}), 110);
     }
 
     render(){
@@ -47,7 +41,7 @@ export default class Header extends React.Component {
                         <Nav isMobile={this.props.isMobile} handleOverlay={this.handleOverlay}/>
                     </div>
                 </header>
-                <SearchOverlay searchToggled={this.state.searchToggled} handleOverlay={this.handleOverlay} handleBlur={this.handleBlur}/>
+                <SearchOverlay searchOverlayOpen={this.state.searchOverlayOpen} handleOverlay={this.handleOverlay} handleBlur={this.handleBlur}/>
             </Fragment>
         );
     }

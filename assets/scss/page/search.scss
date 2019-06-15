@@ -1,0 +1,40 @@
+.search-page {
+    .search-box {
+        background-color: $secondary-background-color;
+        .search-wrapper {
+            max-width: 1140px;
+            width: 100%;
+            i {
+                color: $gray-500;
+                width: 25px;
+            }
+            .search {
+                background-color: $secondary-background-color;
+                width: calc(100% - 25px);
+                height: 35px;
+                border: none;
+
+                &::placeholder { /* Firefox, Chrome, Opera */
+                    color: $gray-500;
+                }
+
+                &:-ms-input-placeholder { /* Internet Explorer 10-11 */
+                    color: $gray-500;
+                }
+            }
+        }
+    }
+    .title {
+        //max-width: 1200px;
+        //margin: 0 auto;
+        //padding: 0 1rem;
+
+        h1 {
+            font-family: 'Coda';
+        }
+    }
+
+    .search-results {
+
+    }
+}

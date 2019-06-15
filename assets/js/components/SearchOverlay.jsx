@@ -40,7 +40,7 @@ export default class SearchOverlay extends React.Component {
 
     render(){
         return(
-            <div className={"search-overlay " + (this.props.searchToggled ? 'active ': '')}>
+            <div className={"search-overlay " + (this.props.searchOverlayOpen ? 'active ': '')}>
                 <div className="search-overlay-inner d-flex justify-content-center">
                     <form className="search-form">
                         <div className={"search-form-wrapper d-flex align-items-center "}>

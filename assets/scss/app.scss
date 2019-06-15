@@ -70,9 +70,11 @@
 // Pages
 @import 'page/homepage';
 @import 'page/movie-info';
+@import 'page/search';
 
 // Partials
 @import 'partials/header';
 @import 'partials/nav';
 @import 'components/movie-preview';
-@import 'components/search';
+@import 'components/large-movie-preview';
+@import 'components/quick-search';

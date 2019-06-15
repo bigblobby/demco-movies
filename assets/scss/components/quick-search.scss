@@ -58,7 +58,7 @@
     .search-results {
         position: absolute;
         width: 100%;
-        height: 80vh;
+        //height: 80vh;
         overflow: auto;
 
         &::-webkit-scrollbar {
@@ -82,8 +82,22 @@
         z-index: 10000;
     }
 
+    @include media-breakpoint-down(md){
+        padding: 1rem;
+    }
+
     .search-overlay-inner {
         padding-top: 7rem;
+
+        @include media-breakpoint-down(md){
+            padding-top: 5rem;
+        }
+
+        .search {
+            @include media-breakpoint-down(md){
+                width: auto;
+            }
+        }
     }
 
     .close-button {

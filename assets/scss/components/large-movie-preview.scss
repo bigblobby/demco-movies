@@ -1,0 +1,33 @@
+.movie-card-large {
+    position: relative;
+    z-index: 100;
+    background-color: lighten($background-color, 5);
+
+    &:hover {
+        text-decoration: none;
+        color: lighten($background-color, 70);
+    }
+    .image-container {
+        //height: 300px;
+
+        img {
+            display: block;
+            height: 300px;
+        }
+    }
+
+    .movie-copy {
+        .movie-title {
+            color: lighten($background-color, 70);
+        }
+        .movie-year {
+            color: lighten($background-color, 40);
+        }
+        .popularity {
+            color: lighten($background-color, 70);
+        }
+        .read-more {
+            color: lighten($background-color, 30);
+        }
+    }
+}

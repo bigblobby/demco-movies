@@ -1,13 +1,15 @@
 import React from 'react';
 import {BrowserRouter, NavLink, Route, Switch} from 'react-router-dom';
+import {createBrowserHistory} from 'history';
 import Header from "./partials/Header";
 import Discover from "./pages/Discover";
 import Movies from "./pages/Movies";
 import TV from "./pages/TV";
 import Homepage from "./pages/Homepage";
 import MovieInfo from "./pages/MovieInfo";
+import Search from "./pages/Search";
 
-export default class Router extends React.Component {
+export default class Routes extends React.Component {
 
     constructor(){
         super();
@@ -47,6 +49,7 @@ export default class Router extends React.Component {
                         <Route path="/discover" component={Discover}/>
                         <Route exact path="/movies" component={Movies}/>
                         <Route path="/tv-shows" component={TV}/>
+                        <Route path="/search" component={Search}/>
                     </Switch>
                 </div>
             </BrowserRouter>

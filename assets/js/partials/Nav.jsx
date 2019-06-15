@@ -16,6 +16,7 @@ export default class Nav extends React.Component {
 
         // Bindings
         this.handleClick = this.handleClick.bind(this);
+        this.handleSearchClick = this.handleSearchClick.bind(this);
     }
 
     handleClick(){
@@ -29,6 +30,11 @@ export default class Nav extends React.Component {
             }
 
         }
+    }
+
+    handleSearchClick(){
+        this.props.handleOverlay();
+        this.handleClick();
     }
 
     render(){
@@ -45,7 +51,7 @@ export default class Nav extends React.Component {
                             <li><NavLink to="/discover">Discover</NavLink></li>
                             <li><NavLink to="/movies">Movies</NavLink></li>
                             <li><NavLink to="/tv-shows">TV</NavLink></li>
-                            <li><a href="#" onClick={this.props.handleOverlay}>Search</a></li>
+                            <li><a href="#" onClick={this.handleSearchClick}>Search</a></li>
                         </ul>
                     </nav>
                     <div className="user-action-container mb-3 mb-lg-0">

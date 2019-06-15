@@ -20,7 +20,9 @@
     "dependencies": {
         "bootstrap": "^4.3.1",
         "es6-promise": "^4.2.8",
+        "history": "^4.9.0",
         "prop-types": "^15.7.2",
+        "query-string": "^6.7.0",
         "react": "^16.8.6",
         "react-dom": "^16.8.6",
         "react-slick": "^0.24.0",
