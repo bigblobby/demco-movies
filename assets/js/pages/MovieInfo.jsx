@@ -1,5 +1,7 @@
 import React from 'react';
-import {getMovieYear, isNotEmpty, formatDate, formatMoney} from "../helper";
+import Slider from "react-slick";
+import {getMovieYear, isNotEmpty, formatDate, formatMoney, truncateString} from "../helper";
+import {getMovieDetails, getSearchResults} from "../api";
 
 export default class MovieInfo extends React.Component {
 
@@ -9,22 +11,95 @@ export default class MovieInfo extends React.Component {
         this.state = {
             movie: {}
         };
+
+        this.renderPersonCard = this.renderPersonCard.bind(this);
     }
 
     componentDidMount(){
-        fetch('https://api.themoviedb.org/3/movie/' + this.props.match.params.id +'?api_key=c0f75ddddbf209af2c49e4af022e0468&language=en-GB')
-            .then(data => data.json())
+        getMovieDetails(this.props.match.params.id)
             .then(result => {
-                this.setState({movie: result});
+                this.setState({movie: result.body});
             });
+    }
+
+    componentDidUpdate(prevProps, prevState){
+        if(prevProps.match.params.id !== this.props.match.params.id){
+            getMovieDetails(this.props.match.params.id)
+                .then(result => {
+                    this.setState({movie: result.body});
+                });
+        }
+    }
+
+    renderPersonCard(person){
+
+        return (
+            <div className="slide">
+                <div className="person-container">
+                    <div className="poster">
+                        <img src={"http://image.tmdb.org/t/p/w185/" + person.profile_path} alt={person.name}/>
+                    </div>
+                    <div className="person-info">
+                        <p className="person-name">{truncateString(person.name, 15)}</p>
+                        <p className="person-character">{truncateString(person.character, 15)}</p>
+                    </div>
+                </div>
+            </div>
+        );
+    }
+    render(){
+        return(
+            <div style={{height: 'calc(100vh - 76px)'}} className="d-flex justify-content-center align-items-center">
+                <div className="spinner-border" role="status" style={{height: '10rem', width: '10rem', color: '#9628a7'}}>
+                    <span className="sr-only">Loading...</span>
+                </div>
+            </div>
+        );
     }
 
     render() {
         if(isNotEmpty(this.state.movie)){
 
             let image = "url('https://image.tmdb.org/t/p/original" + this.state.movie.backdrop_path +"')";
+            const {title, poster_path, overview, budget, revenue, runtime, tagline, vote_average, vote_count, release_date, genres, credits} = this.state.movie;
 
-            const {title, poster_path, overview, budget, revenue, runtime, tagline, vote_average, vote_count, release_date, genres} = this.state.movie;
+            let a = 2 == 4;
+
+            const slickSettings = {
+                slidesToShow: 7,
+                slidesToScroll: 6,
+                infinite: false,
+                responsive: [
+                    {
+                        breakpoint: 1200,
+                        settings: {
+                            slidesToShow: 6,
+                            slidesToScroll: 5,
+                        }
+                    },
+                    {
+                        breakpoint: 992,
+                        settings: {
+                            slidesToShow: 5,
+                            slidesToScroll: 4,
+                        }
+                    },
+                    {
+                        breakpoint: 575,
+                        settings: {
+                            slidesToShow: 3,
+                            slidesToScroll: 2
+                        }
+                    },
+                    {
+                        breakpoint: 350,
+                        settings: {
+                            slidesToShow: 2,
+                            slidesToScroll: 1
+                        }
+                    }
+                ]
+            };
 
             return (
                 <div className="movie-container">
@@ -42,20 +117,35 @@ export default class MovieInfo extends React.Component {
                             <div className="row">
                                 <div className="movie-poster col-md-3">
                                     <img src={"http://image.tmdb.org/t/p/w342/" + poster_path} alt=""/>
+                                    <div className="row mt-3">
+                                        <div className="col-12">
+                                            <button className="watchlist-button">Watchlist +</button>
+                                        </div>
+                                        {/*<div className="col-4">*/}
+                                            {/*<button className="heart-button d-flex justify-content-center"><i className="far fa-heart"></i></button>*/}
+                                        {/*</div>*/}
+                                    </div>
                                 </div>
                                 <div className="movie-info col-md-9">
                                     <div className="genre-container">
                                         {genres.map(genre => {
-                                            return <span className={"genre genre-" + genre.id}>{genre.name}</span>;
+                                            return <span key={genre.id} className={"genre genre-" + genre.id}>{genre.name}</span>;
                                         })}
                                     </div>
-                                    <div className="movie-details py-3">
-                                        <span className="detail-container"><span className="detail-title">Released</span> <span className="detail-copy">{formatDate(release_date)}</span></span>
-                                        <span className="detail-container"><span className="detail-title">Runtime</span> <span className="detail-copy">{runtime} mins</span></span>
-                                        {!!budget && (<span className="detail-container"><span className="detail-title">Budget</span> <span className="detail-copy">{formatMoney(budget)}</span></span>)}
-                                        {!!revenue && (<span className="detail-container"><span className="detail-title">Revenue</span> <span className="detail-copy">{formatMoney(revenue)}</span></span>)}
+                                    <div className="movie-details pb-3 pt-2">
+                                        <div className="detail-container"><span className="detail-title">Released</span> <span className="detail-copy">{formatDate(release_date)}</span></div>
+                                        <div className="detail-container"><span className="detail-title">Runtime</span> <span className="detail-copy">{runtime} mins</span></div>
+                                        {!!budget && (<div className="detail-container"><span className="detail-title">Budget</span> <span className="detail-copy">{formatMoney(budget)}</span></div>)}
+                                        {!!revenue && (<div className="detail-container"><span className="detail-title">Revenue</span> <span className="detail-copy">{formatMoney(revenue)}</span></div>)}
                                     </div>
-                                    <p>{overview}</p>
+                                    <h3>Plot</h3>
+                                    <p className="grey-text copy-font-size">{overview}</p>
+                                    <h3>Cast</h3>
+                                    <Slider {...slickSettings}>
+                                        {credits.cast.map(person => {
+                                            return this.renderPersonCard(person);
+                                        })}
+                                    </Slider>
                                 </div>
                             </div>
                         </div>
@@ -63,7 +153,13 @@ export default class MovieInfo extends React.Component {
                 </div>
             );
         } else {
-           return 'Loading...';
+            return(
+                <div style={{height: 'calc(100vh - 76px)'}} className="d-flex justify-content-center align-items-center">
+                    <div className="spinner-border" role="status" style={{height: '10rem', width: '10rem', color: '#9628a7'}}>
+                        <span className="sr-only">Loading...</span>
+                    </div>
+                </div>
+            );
         }
     }
 }

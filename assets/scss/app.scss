@@ -58,9 +58,12 @@
 //@import "~bootstrap/scss/transitions";
 @import "~bootstrap/scss/type";
 
-
+// Slick
+@import "~slick-carousel/slick/slick.scss";
+@import "~slick-carousel/slick/slick-theme.scss";
 
 // Settings
+@import 'settings/variables';
 @import 'settings/reset';
 @import 'settings/base';
 
@@ -73,3 +76,5 @@
 @import 'partials/nav';
 @import 'components/main-search';
 @import 'components/movie-preview';
+@import 'components/search-overlay';
+@import 'components/search';

@@ -62,12 +62,12 @@
                     &.login {
                         a {
                             display: block;
-                            background: #9628a7;
+                            background: $primary-color;
                             padding: 0.5rem 1rem;
                             border-radius: 3px;
 
                             &:hover {
-                                background: darken(#9628a7, 5);
+                                background: darken($primary-color, 5);
                             }
                         }
                     }

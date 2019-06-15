@@ -1,6 +1,7 @@
 import React from "react";
 import MainSearch from '../components/MainSearch';
 import {shuffle} from "../helper";
+import {getHomepageBackgroundPoster} from "../api";
 
 export default class Homepage extends React.Component {
 
@@ -13,13 +14,13 @@ export default class Homepage extends React.Component {
     }
 
     componentDidMount(){
-        fetch('https://api.themoviedb.org/3/movie/upcoming?api_key=c0f75ddddbf209af2c49e4af022e0468&language=en-US&page=1')
-            .then(data => data.json())
-            .then(res => {
-                shuffle(res.results);
-                console.log(res.results);
-                this.setState({heroPoster: 'https://image.tmdb.org/t/p/original' + res.results[0].backdrop_path});
-            });
+        let self = this;
+
+        getHomepageBackgroundPoster()
+        .then(function(result) {
+            shuffle(result.body.results);
+            self.setState({heroPoster: 'https://image.tmdb.org/t/p/original' + result.body.results[0].backdrop_path});
+        });
     }
 
 

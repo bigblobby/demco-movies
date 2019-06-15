@@ -81,3 +81,12 @@ export function formatMoney(number){
 
     return '$' + res.reverse().join('');
 }
+
+export function truncateString(string, length = 20){
+    if(string.length >= length){
+        return string.slice(0, length) + '...';
+    } else {
+        return string;
+    }
+
+}

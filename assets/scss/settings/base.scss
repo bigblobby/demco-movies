@@ -2,7 +2,7 @@ body {
     font-size: 16px;
     font-family: 'Lato';
     line-height: 1.6;
-    background-color: #2e3036;
+    background-color: $background-color;
     color: $white;
 
     //remove this
@@ -10,7 +10,7 @@ body {
 }
 
 #content {
-    height: 1000px;
+    height: 1500px;
     transition: all 0.3s ease;
     @include media-breakpoint-up(lg){
         //margin-top: 120px;

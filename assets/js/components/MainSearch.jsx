@@ -1,6 +1,7 @@
 import React, {Fragment} from "react";
 import {sortByPopularity} from "../helper";
 import MoviePreview from "./MoviePreview";
+import {getSearchResults} from "../api";
 
 export default class MainSearch extends React.Component {
 
@@ -22,10 +23,9 @@ export default class MainSearch extends React.Component {
     componentDidUpdate(prevProps, prevState){
         if(prevState.searchValue !== this.state.searchValue){
             if(this.state.searchValue){
-                fetch('https://api.themoviedb.org/3/search/movie?api_key=c0f75ddddbf209af2c49e4af022e0468&language=en-GB&query='+ this.state.searchValue +'&page=1&include_adult=false')
-                    .then(data => data.json())
+                getSearchResults(this.state.searchValue)
                     .then(result => {
-                        this.setState({data: result});
+                        this.setState({data: result.body});
                     });
             } else {
                 this.setState({data: {}});
@@ -57,9 +57,9 @@ export default class MainSearch extends React.Component {
                         <div className={"search-form-wrapper d-flex align-items-center " + (this.state.formFocused ? "active " : " ")}>
                             <i className="fas fa-search"></i>
                             <input className="search" type="text" placeholder="Search for a movie or tv show . . ." onFocus={this.handleFocus} onBlur={this.handleBlur} onChange={this.handleChange}/>
-                            <button className="search-button">GO</button>
+                            <button className="search-button d-lg-none">GO</button>
                         </div>
-                        <div className={"search-results d-none" + (this.state.formFocused ? "d-flex " : " ")}>
+                        <div className={"search-results d-none flex-column " + (this.state.formFocused ? "d-flex " : " ")}>
                             {this.state.data.results && this.state.data.results.map(movie => {
                                 return <MoviePreview key={movie.id} movie={movie}/>;
                             })}

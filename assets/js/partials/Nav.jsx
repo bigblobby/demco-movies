@@ -18,7 +18,6 @@ export default class Nav extends React.Component {
         // Bindings
         this.handleResize = this.handleResize.bind(this);
         this.handleClick = this.handleClick.bind(this);
-
     }
 
     componentDidMount(){
@@ -67,6 +66,7 @@ export default class Nav extends React.Component {
                             <li><NavLink to="/discover">Discover</NavLink></li>
                             <li><NavLink to="/movies">Movies</NavLink></li>
                             <li><NavLink to="/tv-shows">TV</NavLink></li>
+                            <li><a href="#" onClick={this.props.handleClickedSearch}>Search</a></li>
                         </ul>
                     </nav>
                     <div className="user-action-container">

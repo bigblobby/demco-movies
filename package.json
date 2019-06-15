@@ -19,8 +19,12 @@
     },
     "dependencies": {
         "bootstrap": "^4.3.1",
+        "es6-promise": "^4.2.8",
         "prop-types": "^15.7.2",
         "react": "^16.8.6",
-        "react-dom": "^16.8.6"
+        "react-dom": "^16.8.6",
+        "react-slick": "^0.24.0",
+        "slick-carousel": "^1.8.1",
+        "superagent": "^5.0.6"
     }
 }
