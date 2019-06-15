@@ -13,7 +13,7 @@ export default class Header extends React.Component {
         };
 
         this.handleClickedSearch = this.handleClickedSearch.bind(this);
-        this.handleClose = this.handleClose.bind(this);
+        this.handleOverlay = this.handleOverlay.bind(this);
         this.handleBlur = this.handleBlur.bind(this);
     }
 
@@ -23,7 +23,7 @@ export default class Header extends React.Component {
         });
     }
 
-    handleClose(){
+    handleOverlay(){
         this.setState(prevState => {
             return {searchToggled: !prevState.searchToggled};
         });
@@ -44,10 +44,10 @@ export default class Header extends React.Component {
                         <div className="logo-container pr-lg-3 mr-auto mr-lg-0">
                             <NavLink className="logo" to="/"><h1>DemCo</h1></NavLink>
                         </div>
-                        <Nav isMobile={this.props.isMobile} handleClickedSearch={this.handleClickedSearch}/>
+                        <Nav isMobile={this.props.isMobile} handleOverlay={this.handleOverlay}/>
                     </div>
                 </header>
-                <SearchOverlay searchToggled={this.state.searchToggled} handleClose={this.handleClose} handleBlur={this.handleBlur}/>
+                <SearchOverlay searchToggled={this.state.searchToggled} handleOverlay={this.handleOverlay} handleBlur={this.handleBlur}/>
             </Fragment>
         );
     }

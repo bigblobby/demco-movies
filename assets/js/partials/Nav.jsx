@@ -45,7 +45,7 @@ export default class Nav extends React.Component {
                             <li><NavLink to="/discover">Discover</NavLink></li>
                             <li><NavLink to="/movies">Movies</NavLink></li>
                             <li><NavLink to="/tv-shows">TV</NavLink></li>
-                            <li><a href="#" onClick={this.props.handleClickedSearch}>Search</a></li>
+                            <li><a href="#" onClick={this.props.handleOverlay}>Search</a></li>
                         </ul>
                     </nav>
                     <div className="user-action-container mb-3 mb-lg-0">
