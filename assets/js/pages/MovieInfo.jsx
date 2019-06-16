@@ -1,7 +1,7 @@
 import React from 'react';
 import Slider from "react-slick";
-import {getMovieYear, isNotEmpty, formatDate, formatMoney, truncateString} from "../helper";
-import {getMovieDetails, getSearchResults} from "../api";
+import {getMovieYear, formatDate, formatMoney, truncateString} from "../helper";
+import {getMovieDetails} from "../api";
 
 export default class MovieInfo extends React.Component {
 
@@ -17,6 +17,9 @@ export default class MovieInfo extends React.Component {
     }
 
     componentDidMount(){
+        // Scroll to top on page load
+        window.scrollTo(0,0);
+
         getMovieDetails(this.props.match.params.id)
             .then(result => {
                 this.setState({movie: result.body, loading: false});
