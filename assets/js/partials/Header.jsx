@@ -17,7 +17,6 @@ export default class Header extends React.Component {
     }
 
     handleOverlay(){
-        console.log('test');
         this.setState(prevState => {
             return {searchOverlayOpen: !prevState.searchOverlayOpen};
         });
@@ -27,7 +26,7 @@ export default class Header extends React.Component {
         // Clear out the search field when click off
         e.currentTarget.value = '';
 
-        setTimeout(()=> this.setState({searchOverlayOpen: false}), 110);
+        setTimeout(()=> this.setState({searchOverlayOpen: false}), 200);
     }
 
     render(){

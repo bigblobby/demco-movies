@@ -25,7 +25,7 @@ export default class MainSearch extends React.Component {
         // Clear out the search field when click off
         e.currentTarget.value = '';
 
-        setTimeout(()=> this.setState({formFocused: false}), 110);
+        setTimeout(()=> this.setState({formFocused: false}), 150);
     }
 
     render(){
