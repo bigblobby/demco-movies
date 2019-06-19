@@ -18,15 +18,12 @@ export default class Header extends React.Component {
 
     handleOverlay(){
         this.setState(prevState => {
-            return {searchOverlayOpen: !prevState.searchOverlayOpen};
+            return {searchOverlayOpen: !prevState.searchOverlayOpen}
         });
     }
 
-    handleBlur(e){
-        // Clear out the search field when click off
-        e.currentTarget.value = '';
-
-        setTimeout(()=> this.setState({searchOverlayOpen: false}), 200);
+    handleBlur(){
+        setTimeout(()=> this.setState({searchOverlayOpen: false}), 150);
     }
 
     render(){

@@ -49,7 +49,7 @@ export default class SearchOverlay extends React.Component {
                         </div>
                         <div className={"search-results d-flex flex-column"}>
                             {this.state.data.results && this.state.data.results.map(movie => {
-                                return <MoviePreview key={movie.id} movie={movie} onClick={this.props.handleOverlay}/>;
+                                return <MoviePreview key={movie.id} movie={movie}/>;
                             })}
                         </div>
                     </form>

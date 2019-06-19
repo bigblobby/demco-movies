@@ -1,6 +1,5 @@
 import React from 'react';
 import {BrowserRouter, NavLink, Route, Switch} from 'react-router-dom';
-import {createBrowserHistory} from 'history';
 import Header from "./partials/Header";
 import Discover from "./pages/Discover";
 import Movies from "./pages/Movies";
@@ -18,19 +17,19 @@ export default class Routes extends React.Component {
             isMobile: null
         };
 
-        this.handleResize = this.handleResize.bind(this);
+        this.checkIsMobile = this.checkIsMobile.bind(this);
     }
 
     componentDidMount(){
-        window.addEventListener('resize', this.handleResize);
-        this.handleResize();
+        window.addEventListener('resize', this.checkIsMobile);
+        this.checkIsMobile();
     }
 
     componentWillUnmount(){
-        window.addEventListener('resize', this.handleResize);
+        window.addEventListener('resize', this.checkIsMobile);
     }
 
-    handleResize(){
+    checkIsMobile(){
         if(window.innerWidth < 992) {
             this.setState({isMobile: true});
         } else {

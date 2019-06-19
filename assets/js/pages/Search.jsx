@@ -3,6 +3,7 @@ import queryString from 'query-string';
 import {getSearchResults} from "../api";
 import {isNotEmpty} from "../helper";
 import LargeMoviePreview from "../components/LargeMoviePreview";
+import Loading from "../components/Loading";
 
 export default class Search extends React.Component {
 
@@ -15,6 +16,7 @@ export default class Search extends React.Component {
             data: {}
         };
 
+        this.fetchSearchResults = this.fetchSearchResults.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
     }
@@ -25,11 +27,15 @@ export default class Search extends React.Component {
 
         let query = queryString.parse(this.props.location.search);
         this.setState({searchValue: query.q}, () => {
-            getSearchResults(this.state.searchValue)
-                .then(result => {
-                    this.setState({data: result.body, loading: false});
-                });
+            this.fetchSearchResults();
         });
+    }
+
+    fetchSearchResults(){
+        getSearchResults(this.state.searchValue)
+            .then(result => {
+                this.setState({data: result.body, loading: false});
+            });
     }
 
     handleSubmit(e){
@@ -37,10 +43,7 @@ export default class Search extends React.Component {
         this.props.history.push('/search?q=' + this.state.searchValue);
         if(this.state.searchValue){
             this.setState({loading: true}, () => {
-                getSearchResults(this.state.searchValue)
-                    .then(result => {
-                        this.setState({data: result.body, loading: false});
-                    });
+                this.fetchSearchResults();
             });
         } else {
             this.setState({data: {}});
@@ -63,13 +66,7 @@ export default class Search extends React.Component {
                     </div>
                 </div>
                 {this.state.loading ?
-                    <div style={{height: 'calc(100vh - 76px)'}}
-                         className="d-flex justify-content-center align-items-center">
-                        <div className="spinner-border" role="status"
-                             style={{height: '10rem', width: '10rem', color: '#9628a7'}}>
-                            <span className="sr-only">Loading...</span>
-                        </div>
-                    </div>
+                    <Loading/>
                     :
                     <div className="container">
                         <div className="row">

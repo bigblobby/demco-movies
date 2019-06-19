@@ -1,7 +1,5 @@
 import React, {Fragment} from "react";
-import {sortByPopularity} from "../helper";
 import MoviePreview from "./MoviePreview";
-import {getSearchResults} from "../api";
 
 export default class MainSearch extends React.Component {
 

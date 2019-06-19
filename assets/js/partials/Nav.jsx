@@ -28,7 +28,6 @@ export default class Nav extends React.Component {
                 this.navigation.current.style.height = this.navigation.current.scrollHeight + 16 + 'px';
                 this.setState({navOpen: true})
             }
-
         }
     }
 
