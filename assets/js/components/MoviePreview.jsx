@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {getMovieYear} from "../helper";
 import {Link} from 'react-router-dom';
 
@@ -19,3 +20,7 @@ export default class MoviePreview extends React.Component {
         );
     }
 }
+
+MoviePreview.propTypes = {
+    movie: PropTypes.object.isRequired
+};

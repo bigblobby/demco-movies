@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import MainSearch from '../components/MainSearch';
 import {shuffle} from "../helper";
 import {getHomepageBackgroundPoster, getSearchResults} from "../api";
@@ -64,3 +65,7 @@ export default class Homepage extends React.Component {
         );
     }
 }
+
+Homepage.propTypes = {
+    isMobile: PropTypes.bool
+};

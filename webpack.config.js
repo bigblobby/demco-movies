@@ -1,4 +1,5 @@
 var Encore = require('@symfony/webpack-encore');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 // Manually configure the runtime environment if not already configured yet by the "encore" command.
 // It's useful when you use tools that rely on webpack.config.js file.
@@ -73,4 +74,9 @@ Encore
     //.addEntry('admin', './assets/js/admin.js')
 ;
 
-module.exports = Encore.getWebpackConfig();
+
+
+let config = Encore.getWebpackConfig();
+
+if(!Encore.isProduction()) config.plugins.push(new BundleAnalyzerPlugin());
+module.exports = config;

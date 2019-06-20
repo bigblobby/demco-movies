@@ -76,7 +76,7 @@ export default class Search extends React.Component {
                             <div className="search-results col-12">
                                 <div className="row">
                                     {isNotEmpty(this.state.data.results) ? this.state.data.results.map(movie => {
-                                        return <LargeMoviePreview movie={movie}/>;
+                                        return <LargeMoviePreview key={movie.id} movie={movie}/>;
                                     })
                                     :
                                     <div>No Results</div>

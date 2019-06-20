@@ -1,4 +1,5 @@
 import React, {Fragment} from "react";
+import PropTypes from 'prop-types';
 import {NavLink} from 'react-router-dom';
 
 export default class Nav extends React.Component {
@@ -64,3 +65,8 @@ export default class Nav extends React.Component {
         );
     }
 }
+
+Nav.propTypes = {
+    handleOverlay: PropTypes.func,
+    isMobile: PropTypes.bool
+};

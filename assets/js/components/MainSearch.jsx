@@ -1,4 +1,5 @@
 import React, {Fragment} from "react";
+import PropTypes from 'prop-types';
 import MoviePreview from "./MoviePreview";
 
 export default class MainSearch extends React.Component {
@@ -47,3 +48,11 @@ export default class MainSearch extends React.Component {
         );
     }
 }
+
+MainSearch.propTypes = {
+    data: PropTypes.object,
+    handleChange: PropTypes.func,
+    handleSubmit: PropTypes.func,
+    isMobile: PropTypes.bool,
+    searchValue: PropTypes.string
+};

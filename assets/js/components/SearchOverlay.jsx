@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import MoviePreview from "./MoviePreview";
 import {getSearchResults} from "../api";
 
@@ -61,3 +62,9 @@ export default class SearchOverlay extends React.Component {
         );
     }
 }
+
+SearchOverlay.propTypes = {
+    handleBlur: PropTypes.func,
+    handleOverlay: PropTypes.func,
+    searchOverlayOpen: PropTypes.bool
+};

@@ -2,6 +2,7 @@ import React, {Fragment} from "react";
 import {NavLink} from "react-router-dom"
 import Nav from "./Nav";
 import SearchOverlay from "../components/SearchOverlay";
+import PropTypes from 'prop-types';
 
 export default class Header extends React.Component {
 
@@ -42,3 +43,7 @@ export default class Header extends React.Component {
         );
     }
 }
+
+Header.propTypes = {
+    isMobile: PropTypes.bool
+};
