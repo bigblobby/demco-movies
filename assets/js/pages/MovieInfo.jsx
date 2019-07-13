@@ -4,6 +4,8 @@ import {getMovieDetails} from "../api";
 import Loading from "../components/Loading";
 import {castSettings} from "../carousel-settings";
 import Carousel from '../components/Carousel';
+import ActorCard from '../components/ActorCard';
+import MovieInfoDetails from '../components/MovieInfoDetails';
 
 export default class MovieInfo extends React.Component {
 
@@ -16,7 +18,6 @@ export default class MovieInfo extends React.Component {
         };
 
         this.renderMovieDetails = this.renderMovieDetails.bind(this);
-        this.renderPersonCard = this.renderPersonCard.bind(this);
         this.fetchMovieDetails = this.fetchMovieDetails.bind(this);
     }
 
@@ -54,25 +55,6 @@ export default class MovieInfo extends React.Component {
                 {!!revenue && (<div className="detail-container"><span
                     className="detail-title">Revenue</span> <span
                     className="detail-copy">{formatMoney(revenue)}</span></div>)}
-            </div>
-        );
-    }
-
-    renderPersonCard(person){
-        const {id, profile_path, name, character} = person;
-        const profileImage = profile_path ? ("http://image.tmdb.org/t/p/w185/" + profile_path) : '/images/person-placeholder.png';
-
-        return (
-            <div className="slide" key={id}>
-                <div className="person-container">
-                    <div className="poster">
-                        <img src={profileImage} alt={name}/>
-                    </div>
-                    <div className="person-info">
-                        <p className="person-name">{truncateString(name, 15)}</p>
-                        <p className="person-character">{truncateString(character, 15)}</p>
-                    </div>
-                </div>
             </div>
         );
     }
@@ -119,13 +101,13 @@ export default class MovieInfo extends React.Component {
                                             return <span key={genre.id} className={"genre genre-" + genre.id}>{genre.name}</span>;
                                         })}
                                     </div>
-                                    {this.renderMovieDetails()}
+                                    <MovieInfoDetails movie={this.state.movie}/>
                                     <h3>Plot</h3>
                                     <p className="grey-text copy-font-size">{overview}</p>
                                     <h3>Cast</h3>
                                     <Carousel settings={castSettings}>
                                         {credits.cast.map(person => {
-                                            return this.renderPersonCard(person);
+                                            return <ActorCard key={person.id} {...person}/>;
                                         })}
                                     </Carousel>
                                 </div>

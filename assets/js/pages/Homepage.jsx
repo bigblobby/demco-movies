@@ -1,10 +1,22 @@
+// @flow
+
 import React from "react";
 import PropTypes from 'prop-types';
-import MainSearch from '../components/MainSearch';
+import HeroSearch from '../components/HeroSearch';
 import {shuffle} from "../helper";
 import {getHomepageBackgroundPoster, getSearchResults} from "../api";
 
-export default class Homepage extends React.Component {
+type HomepageProps = {
+    isMobile: boolean
+}
+
+type HomepageState = {
+    heroPoster: string,
+    searchValue: string,
+    data: any
+}
+
+export default class Homepage extends React.Component<HomepageProps, HomepageState> {
 
     constructor(){
         super();
@@ -60,12 +72,12 @@ export default class Homepage extends React.Component {
             <div className="hero d-flex flex-column justify-content-center p-4" style={{backgroundImage: image}}>
                 <h1 className="hero-heading text-center">Find and discover the latest and greatest movies.</h1>
                 <h5 className="hero-sub-heading text-center">Search for your next favourite movie.</h5>
-                <MainSearch data={this.state.data} searchvalue={this.state.searchValue} isMobile={this.props.isMobile} handleChange={this.handleChange} handleSubmit={this.handleSubmit}/>
+                <HeroSearch data={this.state.data} searchvalue={this.state.searchValue} isMobile={this.props.isMobile} handleChange={this.handleChange} handleSubmit={this.handleSubmit}/>
             </div>
         );
     }
 }
 
-Homepage.propTypes = {
-    isMobile: PropTypes.bool
-};
+// Homepage.propTypes = {
+//     isMobile: PropTypes.bool
+// };

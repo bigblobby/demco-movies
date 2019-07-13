@@ -18,7 +18,7 @@ export default class LargeMoviePreview extends React.Component {
                             <div className="col-12">
                                 <p><span className="movie-title">{title}</span> <span className="movie-year">({getMovieYear(this.props.movie)})</span></p>
                                 <p className="popularity">{vote_average}/10</p>
-                                <p>{truncateString(overview, 200, true) } <span className="read-more">read more</span></p>
+                                <p>{truncateString(overview, 200) } <span className="read-more">read more</span></p>
                             </div>
                         </div>
                     </div>

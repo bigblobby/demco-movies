@@ -1,7 +1,8 @@
 import React from "react";
 import PropTypes from 'prop-types';
-import MoviePreview from "./MoviePreview";
+import SmallMoviePreview from "./SmallMoviePreview";
 import {getSearchResults} from "../api";
+import {Provider} from 'react';
 
 export default class SearchOverlay extends React.Component {
 
@@ -50,7 +51,7 @@ export default class SearchOverlay extends React.Component {
                         </div>
                         <div className={"search-results d-flex flex-column"}>
                             {this.state.data.results && this.state.data.results.map(movie => {
-                                return <MoviePreview key={movie.id} movie={movie}/>;
+                                return <SmallMoviePreview key={movie.id} movie={movie}/>;
                             })}
                         </div>
                     </form>
