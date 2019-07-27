@@ -37,9 +37,7 @@ export default class MovieInfo extends React.Component {
 
     fetchMovieDetails(){
         getMovieDetails(this.props.match.params.id)
-            .then(result => {
-                this.setState({movie: result.body, loading: false});
-            });
+            .then(result => this.setState({movie: result, loading: false}));
     }
 
     renderMovieDetails(){

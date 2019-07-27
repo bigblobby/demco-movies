@@ -22,7 +22,7 @@ export default function ActorCard({id, profile_path, name, character}){
 
 ActorCard.propTypes = {
     id: PropTypes.number.isRequired,
-    profile_path: PropTypes.string.isRequired,
+    profile_path: PropTypes.string,
     name: PropTypes.string.isRequired,
     character: PropTypes.string.isRequired
 };

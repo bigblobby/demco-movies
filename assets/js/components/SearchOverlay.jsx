@@ -24,7 +24,7 @@ export default class SearchOverlay extends React.Component {
             if(this.state.searchValue){
                 getSearchResults(this.state.searchValue)
                     .then(result => {
-                        this.setState({data: result.body});
+                        this.setState({data: result});
                     });
             } else {
                 this.setState({data: {}});

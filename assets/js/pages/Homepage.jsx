@@ -1,5 +1,3 @@
-// @flow
-
 import React from "react";
 import PropTypes from 'prop-types';
 import HeroSearch from '../components/HeroSearch';
@@ -7,13 +5,14 @@ import {shuffle} from "../helper";
 import {getHomepageBackgroundPoster, getSearchResults} from "../api";
 
 type HomepageProps = {
+    history: any,
     isMobile: boolean
 }
 
 type HomepageState = {
     heroPoster: string,
     searchValue: string,
-    data: any
+    data: {}
 }
 
 export default class Homepage extends React.Component<HomepageProps, HomepageState> {
@@ -32,21 +31,16 @@ export default class Homepage extends React.Component<HomepageProps, HomepageSta
     }
 
     componentDidMount(){
-        let self = this;
-
         getHomepageBackgroundPoster()
-        .then(function(result) {
-            shuffle(result.body.results);
-            self.setState({heroPoster: 'https://image.tmdb.org/t/p/original' + result.body.results[0].backdrop_path});
-        });
+        .then(poster => this.setState({heroPoster: poster}));
     }
 
-    componentDidUpdate(prevProps, prevState){
+    componentDidUpdate(prevProps: HomepageProps, prevState: HomepageState){
         if(prevState.searchValue !== this.state.searchValue){
             if(this.state.searchValue){
                 getSearchResults(this.state.searchValue)
                     .then(result => {
-                        this.setState({data: result.body});
+                        this.setState({data: result});
                     });
             } else {
                 this.setState({data: {}});
@@ -54,18 +48,21 @@ export default class Homepage extends React.Component<HomepageProps, HomepageSta
         }
     }
 
-    handleChange(e){
-        this.setState({searchValue: e.target.value});
+    handleChange(e: Event){
+        var target = e.target;
+        if (target instanceof HTMLInputElement) {
+            this.setState({searchValue: target.value});
+        }
+
     }
 
-    handleSubmit(e){
+    handleSubmit(e: Event){
         e.preventDefault();
         this.props.history.push('/search?q=' + this.state.searchValue);
     }
 
 
     render(){
-
         let image = "url('" + this.state.heroPoster +"')";
 
         return(
@@ -78,6 +75,6 @@ export default class Homepage extends React.Component<HomepageProps, HomepageSta
     }
 }
 
-// Homepage.propTypes = {
-//     isMobile: PropTypes.bool
-// };
+Homepage.propTypes = {
+    isMobile: PropTypes.bool
+};
