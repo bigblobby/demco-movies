@@ -29,7 +29,10 @@ Encore
     //.addEntry('page2', './assets/js/page2.js')
 
     // When enabled, Webpack "splits" your files into smaller pieces for greater optimization.
-    //.splitEntryChunks()
+    .splitEntryChunks()
+    // .configureSplitChunks(function(splitChunks) {
+    //     splitChunks.minSize = 20000;
+    // })
 
     // will require an extra script tag for runtime.js
     // but, you probably want this, unless you're building a single-page app
@@ -49,12 +52,13 @@ Encore
     .enableVersioning(Encore.isProduction())
 
     // enables @babel/preset-env polyfills
-    .configureBabel((babelConfig) => {
-        babelConfig.presets.push('@babel/preset-flow');
-    }, {
-        useBuiltIns: 'usage',
-        corejs: 3
-    })
+    // .configureBabel((babelConfig) => {
+    //     babelConfig.presets.push('@babel/preset-flow');
+    //     babelConfig.presets.push('@babel/preset-env');
+    // }, {
+    //     useBuiltIns: 'usage',
+    //     corejs: 3
+    // })
 
     // enables Sass/SCSS support
     .enableSassLoader()
@@ -74,9 +78,8 @@ Encore
     //.addEntry('admin', './assets/js/admin.js')
 ;
 
-
-
 let config = Encore.getWebpackConfig();
 
 if(!Encore.isProduction()) config.plugins.push(new BundleAnalyzerPlugin());
+
 module.exports = config;

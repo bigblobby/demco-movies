@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {getMovieYear} from "../helper";
 import {Link} from 'react-router-dom';
 
-export default class MoviePreview extends React.Component {
+export default class SmallMoviePreview extends React.Component {
     render() {
         const {id, title, poster_path, vote_average} = this.props.movie;
 
@@ -21,6 +21,6 @@ export default class MoviePreview extends React.Component {
     }
 }
 
-MoviePreview.propTypes = {
+SmallMoviePreview.propTypes = {
     movie: PropTypes.object.isRequired
 };

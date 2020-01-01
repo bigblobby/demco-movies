@@ -600,7 +600,7 @@
     "@babel/helper-regex" "^7.4.4"
     regexpu-core "^4.5.4"
 
-"@babel/preset-env@^7.4.0":
+"@babel/preset-env@^7.4.0", "@babel/preset-env@^7.4.5":
   version "7.4.5"
   resolved "https://registry.yarnpkg.com/@babel/preset-env/-/preset-env-7.4.5.tgz#2fad7f62983d5af563b5f3139242755884998a58"
   integrity sha512-f2yNVXM+FsR5V8UwcFeIHzHWgnhXg3NpRmy0ADvALpnhB0SLbCvrCRr4BLOUYbQNLS+Z0Yer46x9dJXpXewI7w==
@@ -2918,6 +2918,11 @@ findup-sync@^2.0.0:
     is-glob "^3.1.0"
     micromatch "^3.0.4"
     resolve-dir "^1.0.1"
+
+flow-bin@^0.102.0:
+  version "0.102.0"
+  resolved "https://registry.yarnpkg.com/flow-bin/-/flow-bin-0.102.0.tgz#3d5de44bcc26d26585e932b3201988b766f9b380"
+  integrity sha512-mYon6noeLO0Q5SbiWULLQeM1L96iuXnRtYMd47j3bEWXAwUW9EnwNWcn+cZg/jC/Dg4Wj/jnkdTDEuFtbeu1ww==
 
 flush-write-stream@^1.0.0:
   version "1.1.1"

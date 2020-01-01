@@ -34,7 +34,7 @@ export default class Search extends React.Component {
     fetchSearchResults(){
         getSearchResults(this.state.searchValue)
             .then(result => {
-                this.setState({data: result.body, loading: false});
+                this.setState({data: result, loading: false});
             });
     }
 

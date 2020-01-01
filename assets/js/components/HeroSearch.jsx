@@ -1,8 +1,8 @@
 import React, {Fragment} from "react";
 import PropTypes from 'prop-types';
-import MoviePreview from "./MoviePreview";
+import SmallMoviePreview from "./SmallMoviePreview";
 
-export default class MainSearch extends React.Component {
+export default class HeroSearch extends React.Component {
 
     constructor(){
         super();
@@ -39,7 +39,7 @@ export default class MainSearch extends React.Component {
                         </div>
                         <div className={"search-results d-none flex-column " + (this.state.formFocused ? "d-flex " : " ")}>
                             {this.props.data.results && this.props.data.results.map(movie => {
-                                return <MoviePreview key={movie.id} movie={movie}/>;
+                                return <SmallMoviePreview key={movie.id} movie={movie}/>;
                             })}
                         </div>
                     </form>
@@ -49,7 +49,7 @@ export default class MainSearch extends React.Component {
     }
 }
 
-MainSearch.propTypes = {
+HeroSearch.propTypes = {
     data: PropTypes.object,
     handleChange: PropTypes.func,
     handleSubmit: PropTypes.func,
